@@ -471,7 +471,7 @@ async def websocket_endpoint(websocket: WebSocket):
         except KeyError:
             pass
         
-@app.get("/download-client", StaticFiles(directory="./dist", html=True), name="static")        
+app.mount("/download-client", StaticFiles(directory="./dist/skittlq-capslock-client.exe", html=True), name="static")        
 
 @app.on_event("startup")
 async def startup_event():
