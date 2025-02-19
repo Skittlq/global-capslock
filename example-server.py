@@ -2,6 +2,7 @@ import logging
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from typing import Set, Dict
+from fastapi.staticfiles import StaticFiles
 from datetime import datetime, timedelta
 import asyncio
 import json
@@ -234,10 +235,13 @@ html = """
                     the world shares this caps lock key
                 </p>
                 <p>
-                whenever anyone running <a href="https://github.com/nolenroyalty/global-capslock">the client</a> presses caps lock, it presses it for everyone else
+                whenever anyone running <a href="https://capslock.skittlq.com/download-client">the client</a> presses caps lock, it presses it for everyone else
                 </p>
                 <p>
                     finally we can all agree on when it's polite to use caps lock!
+                </p>
+                <p>
+                    want to join? download <a href="https://capslock.skittlq.com/download-client">the client</a> and run it on your computer!
                 </p>
             </div>
             <textarea id="caps-input" name="caps-input" rows="5" cols="40">if you're not ready to run the client, you can type some text here if you'd like...</textarea>
@@ -466,6 +470,8 @@ async def websocket_endpoint(websocket: WebSocket):
             listening_clients.remove(websocket)
         except KeyError:
             pass
+        
+app.mount("/download-client", StaticFiles(directory="./dist", html=True), name="static")        
 
 @app.on_event("startup")
 async def startup_event():
