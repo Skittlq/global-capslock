@@ -16,24 +16,24 @@ html = """
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Global Capslock Key</title>
+        <title>Global Capslock Key | Hosted By Skittlq</title>
         <link rel="icon" type="image/png" href="/favicon.png">
         <meta name="viewport" content="width=device-width" />
-        <meta property="og:title" content="The Global Capslock Key" />
-        <meta property="og:url" content="https://globalcapslock.com" />
+        <meta property="og:title" content="The Global Capslock Key | Hosted By Skittlq" />
+        <meta property="og:url" content="https://capslock.skittlq.com" />
         <meta property="og:type" content="website" />
 
-        <meta name="description" content="a synchronized global capslock key" />
-        <meta property="og:description" content="a synchronized global capslock key" />
-        <meta name="twitter:description" content="a synchronized global capslock key" />
+        <meta name="description" content="a synchronized global capslock key, hosted by Skittlq" />
+        <meta property="og:description" content="a synchronized global capslock key, hosted by Skittlq" />
+        <meta name="twitter:description" content="a synchronized global capslock key, hosted by Skittlq" />
 
-        <meta property="og:image" content="https://globalcapslock.com/social.png" />
-        <meta property="twitter:image" content="https://globalcapslock.com/social.png" />
+        <meta property="og:image" content="https://capslock.skittlq.com/social.png" />
+        <meta property="twitter:image" content="https://capslock.skittlq.com/social.png" />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@itseieio" />
-        <meta name="twitter:creator" content="@itseieio" />
-        <meta name="twitter:title" content="The Global Capslock Key" />
+        <meta name="twitter:site" content="@itseieio, @Skittlq_" />
+        <meta name="twitter:creator" content="@itseieio, @Skittlq_" />
+        <meta name="twitter:title" content="The Global Capslock Key | Hosted By Skittlq" />
 
         <style>
         * {
@@ -223,16 +223,6 @@ html = """
     </head>
     <body>
         <div class="wrapper">
-            <div class="self-promo-outer">
-                <div class="self-promo-links">
-                    <a href="https://x.com/itseieio">twitter</a>
-                    <a href="https://bsky.app/profile/itseieio.bsky.social">bsky</a>
-                    <a href="https://eieio.substack.com/">substack</a>
-                    <a href="https://eieio.games/blog/the-global-capslock-key">?</a>
-                    <a href="https://buymeacoffee.com/eieio">$</a>
-                </div>
-                <p>a utility from <a href="https://eieio.games">eieio</a></p>
-            </div>
             <!--<h1 class="site-header-title">Global Caps Lock Status</h1>-->
             <button id="status" class="disabled" onclick='alert("Not so fast!!\n\nIf you want to toggle the caps lock key, download the client.\n\nThen other people can toggle caps lock for you too :)")'>
                 <div id="led" class="led-off"></div>
@@ -248,9 +238,6 @@ html = """
                 </p>
                 <p>
                     finally we can all agree on when it's polite to use caps lock!
-                </p>
-                <p>
-                    to join, <a href="https://github.com/nolenroyalty/global-capslock">download the client</a>
                 </p>
             </div>
             <textarea id="caps-input" name="caps-input" rows="5" cols="40">if you're not ready to run the client, you can type some text here if you'd like...</textarea>
@@ -343,9 +330,9 @@ listening_clients = set()
 connected_clients = {} # websocket -> IP
 last_websocket_update: Dict[str, datetime] = {} # websocket rate limit
 token_buckets = {} # per-ip token bucket limit
-RATE_LIMIT_SECONDS = 0.33
-MAX_TOKENS = 10
-REFILL_TOKENS_PER_SECOND = 1.5
+RATE_LIMIT_SECONDS = 0
+MAX_TOKENS = 1000
+REFILL_TOKENS_PER_SECOND = 1000
 
 SPECIAL_RATE_LIMITS = {}
 
@@ -495,4 +482,4 @@ async def startup_event():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
